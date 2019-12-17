@@ -4,7 +4,7 @@ This work collects and expands "Kuantum Anahtar Dağıtımı: Bir Giriş",
 which is the 3rd place project from [Quantum Programming Hackathon](https://www.qturkey.org/hackathon)
 held by QTurkey in Ankara, 14-15 December 2019.
 
-Said project, developed by Yusuf Behzat and Ali Durşen, is a Turkish teaching material
+Said project, developed by Yusuf Behzat (@yusufbehzat) and Ali Durşen, is a Turkish teaching material
 attempting to present a visual demonstration of BB84 quantum key distribution protocol.
 This expansion aims to add English language support, as well as formatting improvements.
 
