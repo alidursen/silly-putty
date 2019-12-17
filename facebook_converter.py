@@ -21,10 +21,11 @@ if __name__ == "__main__":
     ROOT = './facebook-{}'.format(sys.argv[1])
     CONV_ROOT = ROOT + '-conv'
 
+    if(not pathlib.Path(ROOT).exists):
+        raise FileNotFoundError("Folder not found. Is the script on the same folder with your FB data folder?")
+
     for dirpath, subdirnames, filenames in os.walk(ROOT, topdown=False):
         org_path = pathlib.Path(dirpath)
-        if(not org_path.exists()):
-            raise FileNotFoundError("Folder not found. Is the script on the same folder with your FB data folder?")
         conv_path = pathlib.Path(CONV_ROOT, *(org_path.parts[1:]))
         if(not conv_path.exists()):
             os.makedirs(conv_path)
@@ -33,10 +34,6 @@ if __name__ == "__main__":
             if(pathlib.PurePath(file).suffix == '.json'):
                 with (org_path/file).open(mode='r', encoding='unicode_escape') as original, (conv_path/file).open(mode='x') as converted:
                     for line in original:
-                        try:
-                            converted.write(conv(line))
-                        except UnicodeDecodeError as e:
-                            print(e, line)
-                            raise Exception
+                        converted.write(conv(line))
             else:
                 pass
